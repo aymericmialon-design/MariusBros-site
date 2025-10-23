@@ -1,0 +1,250 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Marius Bros - Site Officiel</title>
+<link rel="icon" type="image/png" href="logo.png">
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap" rel="stylesheet">
+<style>
+/* ===== GLOBAL ===== */
+* { box-sizing: border-box; margin:0; padding:0;}
+body {
+  font-family:'Poppins',sans-serif;
+  background: linear-gradient(135deg,#1a2a6c,#b21f1f,#fdbb2d);
+  color:white; text-align:center; overflow-x:hidden;
+  transition: background 0.5s;
+}
+h1,h2,h3 { letter-spacing: 1px; }
+button { cursor:pointer; transition:0.3s; font-weight:600; }
+button:hover { transform:scale(1.05); }
+
+/* ===== HEADER ===== */
+header {
+  background: rgba(0,0,0,0.5);
+  backdrop-filter: blur(5px);
+  padding: 15px 0;
+  position: sticky; top:0; z-index:10;
+}
+header h1 { font-size:2.5em; }
+nav { margin-top:10px; }
+nav button {
+  background:none; border:none; color:white; margin:0 10px; font-size:1.1em;
+}
+nav button:hover { color:#fdbb2d; transform:scale(1.2); }
+
+/* ===== SECTIONS ===== */
+.section { display:none; padding:40px 20px; animation:fadeIn 0.7s ease-in-out; }
+.active { display:block; }
+@keyframes fadeIn { from {opacity:0; transform:translateY(30px);} to {opacity:1; transform:translateY(0);} }
+
+.container {
+  max-width:900px;
+  margin:40px auto;
+  background: rgba(0,0,0,0.4);
+  border-radius:20px;
+  padding:30px;
+  box-shadow:0 0 40px rgba(0,0,0,0.5);
+}
+
+/* ===== LOGO ===== */
+.logo {
+  width:160px; margin:20px auto; display:block;
+  animation:float 3s ease-in-out infinite;
+}
+@keyframes float {0%,100%{transform:translateY(0);}50%{transform:translateY(-12px);}}
+
+/* ===== BUTTONS ===== */
+.btn-main {
+  background: linear-gradient(90deg,#ff512f,#dd2476);
+  color:white; border:none; padding:12px 25px; border-radius:10px; font-size:1.1em; margin-top:15px;
+}
+.btn-main:hover { background: linear-gradient(90deg,#dd2476,#ff512f); }
+
+/* ===== FOOTER ===== */
+footer { margin-top:60px; padding:20px; background: rgba(0,0,0,0.5);}
+footer a { color:#fdbb2d; text-decoration:none; }
+
+/* ===== TEXTAREAS & INPUTS ===== */
+input, textarea { width:90%; padding:10px; margin:10px 0; border-radius:10px; border:none; font-size:16px; }
+
+/* ===== EASTER EGGS ===== */
+.credits span { color:#fdbb2d; cursor:pointer; }
+.hidden { display:none; }
+
+/* ===== TUTORIAL LIST ===== */
+.tuto ol { text-align:left; margin-top:15px; }
+
+/* ===== ANIMATIONS BONUS ===== */
+@keyframes glow {
+  0%,100%{ text-shadow:0 0 5px #fff,0 0 10px #fdbb2d; }
+  50%{ text-shadow:0 0 20px #fff,0 0 40px #fdbb2d; }
+}
+.glow { animation:glow 1.5s infinite; }
+
+</style>
+</head>
+<body>
+
+<header>
+<h1 class="glow">👑 Marius Bros</h1>
+<nav>
+<button onclick="showSection('accueil')">Accueil</button>
+<button onclick="showSection('telechargement')">Téléchargement</button>
+<button onclick="showSection('avis')">Avis</button>
+<button onclick="showSection('chat')">Chat Magique</button>
+<button onclick="showSection('options')">Options Fun</button>
+<button onclick="showSection('traduction')">Traduction</button>
+</nav>
+</header>
+
+<img src="logo.png" alt="Marius Bros" class="logo">
+
+<!-- ACCUEIL -->
+<div id="accueil" class="section active">
+<div class="container">
+<h2>Bienvenue, héros 👋</h2>
+<p>Découvre le monde de <strong>Marius Bros</strong> — un jeu d’aventure unique créé par <strong>Aymeric</strong> !</p>
+<p>Affronte les niveaux, découvre des secrets cachés et amuse-toi comme jamais ! 🚀</p>
+<div class="credits">
+<p>💎 Dédicace spéciale à <span onclick="messageLucas()">Lucas</span> et <span onclick="messagePaul()">Paul</span></p>
+</div>
+</div>
+</div>
+
+<!-- TELECHARGEMENT -->
+<div id="telechargement" class="section">
+<div class="container">
+<h2>⬇️ Télécharge le jeu</h2>
+<p>Clique sur le bouton pour obtenir la dernière version :</p>
+<a href="https://drive.google.com/file/d/1ZPy1Zk1vowJKi2XC4gbAbPAX9yWGARzU/view?usp=drive_link" target="_blank">
+<button class="btn-main">🚀 Télécharger (.zip)</button>
+</a>
+<h3>🧠 Tutoriel d’installation</h3>
+<ol class="tuto">
+<li>Télécharge le fichier ZIP du jeu.</li>
+<li>Décompresse-le avec WinRAR ou 7-Zip.</li>
+<li>Ouvre le dossier extrait.</li>
+<li>Lance <strong>MariusBros.exe</strong>.</li>
+<li>Profite de l’aventure 🎮</li>
+</ol>
+</div>
+</div>
+
+<!-- AVIS -->
+<div id="avis" class="section">
+<div class="container">
+<h2>💬 Laisse ton avis</h2>
+<input type="text" id="nom" placeholder="Ton prénom">
+<textarea id="avisTxt" placeholder="Ton avis..." rows="4"></textarea>
+<button class="btn-main" onclick="ajouterAvis()">Envoyer</button>
+<div id="listeAvis" style="margin-top:20px;"></div>
+</div>
+</div>
+
+<!-- CHAT MAGIQUE -->
+<div id="chat" class="section">
+<div class="container">
+<h2>🤖 Chat Magique avec Marius</h2>
+<p>Parle avec Marius, le héros du jeu !</p>
+<input type="text" id="question" placeholder="Pose ta question ici...">
+<button class="btn-main" onclick="repondreChat()">Envoyer</button>
+<div id="reponseChat" style="margin-top:20px; font-style:italic;"></div>
+</div>
+</div>
+
+<!-- OPTIONS FUN -->
+<div id="options" class="section">
+<div class="container">
+<h2>🎉 Options Fun et surprises</h2>
+<button class="btn-main" onclick="surprise1()">🎁 Surprise 1</button>
+<button class="btn-main" onclick="surprise2()">✨ Surprise 2</button>
+<button class="btn-main" onclick="surprise3()">🕹 Mini jeu clic</button>
+<button class="btn-main" onclick="secretEasterEgg()">🦄 Easter Egg</button>
+<button class="btn-main" onclick="changeBackground()">🌈 Changer le fond</button>
+<button class="btn-main" onclick="funAnimations()">🎇 Animations Fun</button>
+<button class="btn-main" onclick="randomMessage()">💌 Message aléatoire</button>
+<button class="btn-main" onclick="popupSecret()">🔒 Secret Caché</button>
+</div>
+</div>
+
+<!-- TRADUCTION -->
+<div id="traduction" class="section">
+<div class="container">
+<h2>🌍 Traduction</h2>
+<p id="texteTraduction">Bienvenue sur le site officiel de Marius Bros !</p>
+<button class="btn-main" onclick="translateFRtoEN()">🇺🇸 Anglais</button>
+<button class="btn-main" onclick="translateENtoFR()">🇫🇷 Français</button>
+</div>
+</div>
+
+<footer>
+<p>© 2025 Aymeric — Site officiel de Marius Bros</p>
+<p>💖 Dédicace spéciale à Paul & Lucas</p>
+</footer>
+
+<script>
+/* ===== SECTION SWITCH ===== */
+function showSection(id){
+document.querySelectorAll('.section').forEach(sec=>sec.classList.remove('active'));
+document.getElementById(id).classList.add('active');
+}
+
+/* ===== DEDICACES ===== */
+function messageLucas(){alert("Coucou Gaëlle et Damien 😄");}
+function messagePaul(){alert("Salut Paul, merci pour ton soutien légendaire !");}
+
+/* ===== AVIS ===== */
+function ajouterAvis(){
+const nom=document.getElementById('nom').value.trim();
+const avis=document.getElementById('avisTxt').value.trim();
+if(!nom||!avis){alert("Merci de remplir ton nom et ton avis !");return;}
+const div=document.createElement("div");
+div.style.background="rgba(255,255,255,0.1)";
+div.style.borderRadius="10px";
+div.style.marginTop="10px";
+div.style.padding="10px";
+div.innerHTML=`<strong>${nom}</strong> : ${avis}`;
+document.getElementById("listeAvis").appendChild(div);
+document.getElementById('nom').value="";
+document.getElementById('avisTxt').value="";
+alert("Merci pour ton avis !");
+}
+
+/* ===== CHAT ===== */
+function repondreChat(){
+const question=document.getElementById('question').value.toLowerCase();
+const rep=document.getElementById('reponseChat');
+let reponse="Je n’ai pas compris, peux-tu répéter ?";
+if(question.includes("bonjour")) reponse="Salut aventurier ! Prêt à sauver le royaume ?";
+else if(question.includes("jeu")) reponse="Le jeu Marius Bros a été créé avec passion par Aymeric !";
+else if(question.includes("lucas") && question.includes("gaelle")) reponse="Arrête maintenant !!!! 😡";
+else if(question.includes("lucas")) reponse="Coucou Gaëlle et Damien 😄";
+else if(question.includes("paul")) reponse="Paul, le héros légendaire du royaume 🔥";
+else if(question.includes("aymeric")) reponse="Aymeric, le créateur suprême 👑";
+rep.textContent=reponse;
+}
+
+/* ===== TRADUCTION ===== */
+function translateFRtoEN(){document.getElementById('texteTraduction').textContent="Welcome to the official site of Marius Bros!";}
+function translateENtoFR(){document.getElementById('texteTraduction').textContent="Bienvenue sur le site officiel de Marius Bros !";}
+
+/* ===== OPTIONS FUN ===== */
+function surprise1(){alert("🎁 Surprise 1 : Tu as trouvé un trésor secret !");}
+function surprise2(){alert("✨ Surprise 2 : Les étoiles brillent pour toi !");}
+function surprise3(){
+let count=0;
+document.body.addEventListener("click",()=>{count++; if(count>=5) alert("🕹 Mini jeu : Bravo, tu as cliqué 5 fois !");},{once:true});
+}
+function secretEasterEgg(){alert("🦄 Easter Egg activé : Que la magie commence !");}
+function changeBackground(){
+document.body.style.background = `linear-gradient(135deg, rgb(${rand(0,255)},${rand(0,255)},${rand(0,255)}), rgb(${rand(0,255)},${rand(0,255)},${rand(0,255)}), rgb(${rand(0,255)},${rand(0,255)},${rand(0,255)}))`;
+}
+function funAnimations(){document.querySelector('.logo').style.transform='rotate(360deg)'; setTimeout(()=>{document.querySelector('.logo').style.transform='rotate(0deg)'},1000);}
+function randomMessage(){alert(["💖 Tu es incroyable !","⚡ Energie maximale !","🌟 Brille comme une étoile !"][rand(0,2)]);}
+function popupSecret(){alert("🔒 Secret caché : Tu as débloqué une surprise !");}
+function rand(min,max){return Math.floor(Math.random()*(max-min+1)+min);}
+</script>
+
+</body>
+</html>
